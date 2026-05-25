@@ -235,6 +235,12 @@ function Sidebar({view, setView, onBook, lang, setLang}) {
         </button>
       </div>
 
+      <div className="mobile-scroll-hint" style={{display:'none', justifyContent:'center', alignItems:'center', paddingBottom:12, fontSize:10, color:C.muted, letterSpacing:1, textTransform:'uppercase'}}>
+        <span style={{opacity:0.4, fontSize:12}}>←</span>
+        <span style={{margin:'0 8px', color:'#fff', fontWeight:600}}>{lang==='nl'?'Swipe het menu':lang==='es'?'Deslizar menú':'Swipe to navigate'}</span>
+        <span style={{opacity:0.4, fontSize:12}}>→</span>
+      </div>
+
       <div style={{padding:'12px 16px 16px',borderTop:`1px solid ${C.border}`}}>
         <select value={lang} onChange={e=>setLang(e.target.value)} style={{width:'100%',background:C.card,border:`1px solid ${C.border}`,borderRadius:6,padding:'6px 10px',color:C.text,fontSize:11,marginBottom:12,outline:'none'}}>
           <option value="nl">Nederlands</option>
@@ -1116,8 +1122,12 @@ export default function ManestreamOS() {
     @media (max-width: 768px) {
       .app-container { flex-direction: column !important; overflow-y: auto !important; height: auto !important; min-height: 100vh !important; }
       .sidebar { width: 100% !important; border-right: none !important; border-bottom: 1px solid #2d2d32 !important; flex-shrink: 0 !important; }
-      .nav-links { display: flex !important; flex-direction: row !important; overflow-x: auto !important; padding-bottom: 8px !important; }
-      .nav-links button { min-width: 140px !important; justify-content: center !important; }
+      .nav-links { display: flex !important; flex-direction: row !important; overflow-x: auto !important; padding-bottom: 4px !important; scroll-snap-type: x mandatory; }
+      .nav-links button { min-width: 130px !important; justify-content: center !important; scroll-snap-align: center; }
+      .nav-links::-webkit-scrollbar { height: 4px !important; }
+      .nav-links::-webkit-scrollbar-track { background: rgba(255,255,255,0.05) !important; border-radius: 4px !important; margin: 0 20px !important; }
+      .nav-links::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5) !important; border-radius: 4px !important; }
+      .mobile-scroll-hint { display: flex !important; }
       .mobile-padding { padding: 16px !important; }
       .grid-4, .grid-3 { grid-template-columns: 1fr 1fr !important; }
       .grid-2, .grid-2-sidebar { grid-template-columns: 1fr !important; }
