@@ -214,8 +214,8 @@ function Sidebar({view, setView, onBook, lang, setLang}) {
   return (
     <div style={{width:220,background:C.surface,borderRight:`1px solid ${C.border}`,display:'flex',flexDirection:'column',flexShrink:0}}>
       <div style={{padding:'20px 20px 16px',borderBottom:`1px solid ${C.border}`}}>
-        <div style={{marginBottom: 4}}>
-          <img src="/logo.svg" alt="Manestream" style={{height: 24}} />
+        <div style={{marginBottom: 8}}>
+          <img src="/logo-white.svg" alt="Manestream" style={{height: 44, objectFit: 'contain'}} />
         </div>
         <div style={{fontSize:11,color:C.dim,marginTop:2,letterSpacing:.5}}>OPERATIONS OS · v1.0</div>
       </div>
@@ -805,7 +805,7 @@ function InvoicingView({lang, setLang}) {
           <div style={{display:'flex',justifyContent:'space-between',marginBottom:32,paddingBottom:32,borderBottom:'2px solid #f0f0f0'}}>
             <div>
               <div style={{marginBottom:12}}>
-                <img src="/logo-dark.svg" alt="Manestream" style={{height: 36, objectFit: 'contain'}} />
+                <img src="/logo-dark.svg" alt="Manestream" style={{height: 80, objectFit: 'contain'}} />
               </div>
               <div style={{fontSize:13,color:'#555',lineHeight:1.6}}>Manestream Europe<br/>7595 WE Weerselo<br/>The Netherlands<br/>info@flymanestream.com<br/>VAT: NL123456789B01</div>
             </div>
@@ -1129,8 +1129,8 @@ export default function ManestreamOS() {
   if (showSplash) {
     return (
       <div style={{width:'100vw',height:'100vh',background:C.bg,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-        <div style={{marginBottom: 16}}>
-          <img src="/logo-white.svg" alt="Manestream" style={{height: 48, objectFit: 'contain'}} />
+        <div style={{marginBottom: 24}}>
+          <img src="/logo-white.svg" alt="Manestream" style={{height: 140, objectFit: 'contain', animation: 'pulse 2s infinite'}} />
         </div>
         <div style={{fontSize: 12, color: C.orange, marginTop: 8, letterSpacing: 2, fontWeight: 600}}>OPERATIONS OS</div>
         <button onClick={() => setShowSplash(false)} style={{marginTop: 40, background: 'transparent', border: `1px solid ${C.border}`, padding: '8px 20px', borderRadius: 20, color: C.muted, cursor: 'pointer', fontSize: 11, textTransform: 'uppercase'}}>Skip Intro</button>
