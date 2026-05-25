@@ -20,7 +20,7 @@ export const TRANSLATIONS = {
     status: { in_flight: 'In vlucht', pre_flight: 'Pre-vlucht', docs_pending: 'Docs ontbreken', delivered: 'Afgeleverd', booking: 'Boeking' },
     docStatus: { signed: 'Ondertekend', uploaded: 'Geüpload', pending: 'Handtekening nodig', missing: 'Ontbreekt' },
     kpis: { activeFlights: 'Actieve Vluchten', horsesTransit: 'Paarden Onderweg', docsComplete: 'Docs Compleet', docsVault: 'Docs in Vault', inAir: 'momenteel in lucht', euUs: 'Europe ↔ North America', missingParts: 'met ontbrekende stukken', digitized: 'Gedigitaliseerd & veilig' },
-    dash: { date: 'Maandag 25 mei 2026', activeShipments: 'actieve zendingen', alerts: 'Actieve Waarschuwingen — Pijnpunten', fix: '→ Fix', liveFlight: 'Live vlucht nu', upcoming: 'Aankomende vluchten', dep: 'Vertrek', arr: 'Aankomst', completed: 'voltooid', groom: 'Groom', benefits: ['Alle docs automatisch naar vault','E-handtekening in 1 klik','Automatische checklist per vlucht','Camera-scan → direct gedigitaliseerd','Nooit meer een missende handtekening'] },
+    dash: { date: 'Maandag 25 mei 2026', activeShipments: 'actieve zendingen', alerts: 'Actieve Waarschuwingen — Pijnpunten', alertMsgs: ['Grand Finale — Coggins handtekening ontbreekt', 'Grand Finale — USDA & Exportvergunning ontbreken', 'Black Pearl — 4/5 documenten ontbreken', 'Force Majeure — Gezondheidscertificaat ontbreekt'], fix: '→ Fix', liveFlight: 'Live vlucht nu', upcoming: 'Aankomende vluchten', dep: 'Vertrek', arr: 'Aankomst', completed: 'voltooid', groom: 'Groom', benefits: ['Alle docs automatisch naar vault','E-handtekening in 1 klik','Automatische checklist per vlucht','Camera-scan → direct gedigitaliseerd','Nooit meer een missende handtekening'] },
     horses: { title: 'Paardenregister', active: 'paarden actief', search: 'Zoek paard of eigenaar...', allStat: 'Alle statussen', route: 'Route', docs: 'Documenten', complete: 'compleet', year: 'jaar' },
     profile: { back: '← Terug naar paardenregister', owner: 'Eigenaar', email: 'Email', from: 'Van', to: 'Naar', tabs: { docs: 'Documenten & Kluis', info: 'Reisinfo', history: 'Activiteit' }, allReq: 'Alle vereiste documenten voor transport', vaultSub: 'Vault: Cloudinary + Viesa Automations', scanBtn: '📷 Scan', reqSigBtn: '✎ Handtekening aanvragen', signBtn: '✓ Digitaal ondertekenen', downBtn: '↓ Downloaden', scanning: 'Scannen...' },
     flights: { title: 'Vluchten', planned: 'vluchten gepland of actief', checkDocs: 'Documenten checken', viewHorse: 'Paard bekijken' },
@@ -35,7 +35,7 @@ export const TRANSLATIONS = {
     status: { in_flight: 'In flight', pre_flight: 'Pre-flight', docs_pending: 'Docs missing', delivered: 'Delivered', booking: 'Booking' },
     docStatus: { signed: 'Signed', uploaded: 'Uploaded', pending: 'Signature needed', missing: 'Missing' },
     kpis: { activeFlights: 'Active Flights', horsesTransit: 'Horses in Transit', docsComplete: 'Docs Complete', docsVault: 'Docs in Vault', inAir: 'currently in air', euUs: 'Europe ↔ North America', missingParts: 'with missing parts', digitized: 'Digitized & secure' },
-    dash: { date: 'Monday, May 25, 2026', activeShipments: 'active shipments', alerts: 'Active Alerts — Pain Points', fix: '→ Fix', liveFlight: 'Live flight now', upcoming: 'Upcoming flights', dep: 'Departure', arr: 'Arrival', completed: 'completed', groom: 'Groom', benefits: ['All docs auto to vault','E-signature in 1 click','Auto checklist per flight','Camera-scan → instant digitize','No more missing signatures'] },
+    dash: { date: 'Monday, May 25, 2026', activeShipments: 'active shipments', alerts: 'Active Alerts — Pain Points', alertMsgs: ['Grand Finale — Coggins signature missing', 'Grand Finale — USDA & Export Permit missing', 'Black Pearl — 4/5 documents missing', 'Force Majeure — Health Certificate missing'], fix: '→ Fix', liveFlight: 'Live flight now', upcoming: 'Upcoming flights', dep: 'Departure', arr: 'Arrival', completed: 'completed', groom: 'Groom', benefits: ['All docs auto to vault','E-signature in 1 click','Auto checklist per flight','Camera-scan → instant digitize','No more missing signatures'] },
     horses: { title: 'Horse Registry', active: 'horses active', search: 'Search horse or owner...', allStat: 'All statuses', route: 'Route', docs: 'Documents', complete: 'complete', year: 'years' },
     profile: { back: '← Back to horse registry', owner: 'Owner', email: 'Email', from: 'From', to: 'To', tabs: { docs: 'Documents & Vault', info: 'Travel Info', history: 'Activity' }, allReq: 'All required documents for transport', vaultSub: 'Vault: Cloudinary + Viesa Automations', scanBtn: '📷 Scan', reqSigBtn: '✎ Request signature', signBtn: '✓ Digitally sign', downBtn: '↓ Download', scanning: 'Scanning...' },
     flights: { title: 'Flights', planned: 'flights planned or active', checkDocs: 'Check documents', viewHorse: 'View horse' },
@@ -50,7 +50,7 @@ export const TRANSLATIONS = {
     status: { in_flight: 'En vuelo', pre_flight: 'Pre-vuelo', docs_pending: 'Faltan docs', delivered: 'Entregado', booking: 'Reserva' },
     docStatus: { signed: 'Firmado', uploaded: 'Subido', pending: 'Firma necesaria', missing: 'Falta' },
     kpis: { activeFlights: 'Vuelos Activos', horsesTransit: 'Caballos en Tránsito', docsComplete: 'Docs Completos', docsVault: 'Docs en Bóveda', inAir: 'actualmente en el aire', euUs: 'Europa ↔ Norteamérica', missingParts: 'con partes faltantes', digitized: 'Digitalizado y seguro' },
-    dash: { date: 'Lunes, 25 de mayo de 2026', activeShipments: 'envíos activos', alerts: 'Alertas Activas — Puntos Críticos', fix: '→ Arreglar', liveFlight: 'Vuelo en vivo ahora', upcoming: 'Próximos vuelos', dep: 'Salida', arr: 'Llegada', completed: 'completado', groom: 'Mozo', benefits: ['Docs automáticos a bóveda','Firma electrónica en 1 clic','Checklist auto por vuelo','Escaneo de cámara → digitalizado','No más firmas faltantes'] },
+    dash: { date: 'Lunes, 25 de mayo de 2026', activeShipments: 'envíos activos', alerts: 'Alertas Activas — Puntos Críticos', alertMsgs: ['Grand Finale — Falta firma de Coggins', 'Grand Finale — Falta Permiso USDA y Exportación', 'Black Pearl — Faltan 4/5 documentos', 'Force Majeure — Falta Certificado de Salud'], fix: '→ Arreglar', liveFlight: 'Vuelo en vivo ahora', upcoming: 'Próximos vuelos', dep: 'Salida', arr: 'Llegada', completed: 'completado', groom: 'Mozo', benefits: ['Docs automáticos a bóveda','Firma electrónica en 1 clic','Checklist auto por vuelo','Escaneo de cámara → digitalizado','No más firmas faltantes'] },
     horses: { title: 'Registro de Caballos', active: 'caballos activos', search: 'Buscar caballo o dueño...', allStat: 'Todos los estados', route: 'Ruta', docs: 'Documentos', complete: 'completo', year: 'años' },
     profile: { back: '← Volver al registro', owner: 'Propietario', email: 'Email', from: 'De', to: 'A', tabs: { docs: 'Documentos y Bóveda', info: 'Info de Viaje', history: 'Actividad' }, allReq: 'Todos los documentos requeridos', vaultSub: 'Bóveda: Cloudinary + Viesa Automations', scanBtn: '📷 Escanear', reqSigBtn: '✎ Solicitar firma', signBtn: '✓ Firmar digitalmente', downBtn: '↓ Descargar', scanning: 'Escaneando...' },
     flights: { title: 'Vuelos', planned: 'vuelos planeados o activos', checkDocs: 'Revisar documentos', viewHorse: 'Ver caballo' },
@@ -150,10 +150,10 @@ const INIT_DOCS = {
 };
 
 const FLIGHTS = [
-  {id:'MS-2026-041', route:'AMS → MIA', horseId:'H001', horse:'Quantum Leap', groom:'Emily Sanders', status:'in_flight', dep:'25 mei, 06:00', arr:'25 mei, 14:30', prog:65},
-  {id:'MS-2026-042', route:'MIA → AMS', horseId:'H002', horse:'Grand Finale', groom:'Emily Sanders', status:'pre_flight', dep:'28 mei, 09:00', arr:'28 mei, 23:00', prog:0},
-  {id:'MS-2026-043', route:'CDG → JFK', horseId:'H003', horse:'Black Pearl', groom:'TBD', status:'docs_pending', dep:'3 jun, 11:00', arr:'3 jun, 15:00', prog:0},
-  {id:'MS-2026-044', route:'LYS → MIA', horseId:'H006', horse:'Force Majeure', groom:'TBD', status:'docs_pending', dep:'7 jun, 08:00', arr:'7 jun, 16:00', prog:0},
+  {id:'MS-2026-041', route:'AMS → MIA', horseId:'H001', horse:'Quantum Leap', groom:'Emily Sanders', status:'in_flight', dep:{nl:'25 mei, 06:00',en:'May 25, 06:00',es:'25 de mayo, 06:00'}, arr:{nl:'25 mei, 14:30',en:'May 25, 14:30',es:'25 de mayo, 14:30'}, prog:65},
+  {id:'MS-2026-042', route:'MIA → AMS', horseId:'H002', horse:'Grand Finale', groom:'Emily Sanders', status:'pre_flight', dep:{nl:'28 mei, 09:00',en:'May 28, 09:00',es:'28 de mayo, 09:00'}, arr:{nl:'28 mei, 23:00',en:'May 28, 23:00',es:'28 de mayo, 23:00'}, prog:0},
+  {id:'MS-2026-043', route:'CDG → JFK', horseId:'H003', horse:'Black Pearl', groom:'TBD', status:'docs_pending', dep:{nl:'3 jun, 11:00',en:'Jun 3, 11:00',es:'3 de jun, 11:00'}, arr:{nl:'3 jun, 15:00',en:'Jun 3, 15:00',es:'3 de jun, 15:00'}, prog:0},
+  {id:'MS-2026-044', route:'LYS → MIA', horseId:'H006', horse:'Force Majeure', groom:'TBD', status:'docs_pending', dep:{nl:'7 jun, 08:00',en:'Jun 7, 08:00',es:'7 de jun, 08:00'}, arr:{nl:'7 jun, 16:00',en:'Jun 7, 16:00',es:'7 de jun, 16:00'}, prog:0},
 ];
 
 // ─── UI primitives ───────────────────────────────────────────────────────────
@@ -212,7 +212,7 @@ function Sidebar({view, setView, onBook, lang, setLang}) {
   ];
 
   return (
-    <div style={{width:220,background:C.surface,borderRight:`1px solid ${C.border}`,display:'flex',flexDirection:'column',flexShrink:0}}>
+    <div className="sidebar" style={{width:220,background:C.surface,borderRight:`1px solid ${C.border}`,display:'flex',flexDirection:'column',flexShrink:0}}>
       <div style={{padding:'20px 20px 16px',borderBottom:`1px solid ${C.border}`}}>
         <div style={{marginBottom: 8}}>
           <img src="/logo-white.svg" alt="Manestream" style={{height: 44, objectFit: 'contain'}} />
@@ -220,7 +220,7 @@ function Sidebar({view, setView, onBook, lang, setLang}) {
         <div style={{fontSize:11,color:C.dim,marginTop:2,letterSpacing:.5}}>OPERATIONS OS · v1.0</div>
       </div>
 
-      <div style={{padding:'12px 12px',flex:1}}>
+      <div className="nav-links" style={{padding:"12px 12px",flex:1}}>
         {NAV.map(n => (
           <button key={n.id} onClick={() => setView(n.id)} style={{display:'flex',alignItems:'center',gap:10,width:'100%',padding:'9px 12px',borderRadius:8,border:'none',background:view===n.id?C.orangeDim:'transparent',color:view===n.id?C.orange:C.muted,fontSize:13,fontWeight:view===n.id?600:400,cursor:'pointer',fontFamily:'inherit',marginBottom:2,transition:'all .15s'}}>
             <span style={{fontSize:16,lineHeight:1}}>{n.icon}</span>
@@ -267,13 +267,13 @@ function DashboardView({horses, flights, onHorse, showToast, lang}) {
   ];
 
   return (
-    <div style={{padding:28,maxWidth:1100}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:1100}}>
       <div style={{marginBottom:24}}>
         <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{t.nav.dashboard}</h1>
         <div style={{fontSize:13,color:C.muted,marginTop:2}}>{t.dash.date} — 4 {t.dash.activeShipments}</div>
       </div>
 
-      <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:12,marginBottom:24}}>
+      <div className="grid-4" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:24}}>
         {[
           {label:t.kpis.activeFlights, val:'4', sub:`1 ${t.kpis.inAir}`, color:C.blue},
           {label:t.kpis.horsesTransit, val:'6', sub:t.kpis.euUs, color:C.orange},
@@ -288,7 +288,7 @@ function DashboardView({horses, flights, onHorse, showToast, lang}) {
         ))}
       </div>
 
-      <div style={{display:'grid',gridTemplateColumns:'1fr 340px',gap:16}}>
+      <div className="grid-2-sidebar" style={{display:"grid",gridTemplateColumns:"1fr 340px",gap:16}}>
         <div>
           <div style={{fontSize:13,fontWeight:600,color:C.text,marginBottom:10,display:'flex',alignItems:'center',gap:8}}>
             <span style={{width:8,height:8,borderRadius:99,background:C.red,display:'inline-block'}} />
@@ -333,7 +333,7 @@ function DashboardView({horses, flights, onHorse, showToast, lang}) {
                 <div style={{fontSize:13,fontWeight:600,color:C.text}}>{f.route}</div>
                 <Chip label={STATUS[f.status].label} color={STATUS[f.status].color} bg={STATUS[f.status].bg} />
               </div>
-              <div style={{fontSize:11,color:C.muted}}>{f.horse} · {f.dep}</div>
+              <div style={{fontSize:11,color:C.muted}}>{f.horse} · {f.dep[lang] || f.dep}</div>
             </div>
           ))}
 
@@ -372,7 +372,7 @@ function HorsesView({horses, onSelect, lang}) {
   });
 
   return (
-    <div style={{padding:28,maxWidth:1000}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:1000}}>
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
         <div>
           <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{t.horses.title}</h1>
@@ -393,7 +393,7 @@ function HorsesView({horses, onSelect, lang}) {
           const st = STATUS[h.status];
           const pct = h.dt>0 ? Math.round((h.dc/h.dt)*100) : 0;
           return (
-            <div key={h.id} onClick={() => onSelect(h)} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:12,padding:'14px 20px',cursor:'pointer',display:'grid',gridTemplateColumns:'1fr 160px 160px 140px',gap:12,alignItems:'center'}}>
+            <div className="horse-row" key={h.id} onClick={() => onSelect(h)} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:12,padding:'14px 20px',cursor:'pointer',display:'grid',gridTemplateColumns:'1fr 160px 160px 140px',gap:12,alignItems:'center'}}>
               <div>
                 <div style={{fontSize:14,fontWeight:600,color:C.text}}>{h.name}</div>
                 <div style={{fontSize:12,color:C.muted,marginTop:2}}>{h.breed} · {h.age} {t.horses.year} · {h.col}</div>
@@ -446,7 +446,7 @@ function HorseProfileView({horse, docs, onBack, onScan, onReqSig, onSign, scanni
   const allTypes = horse.dt === 6 ? DOC_TYPES[lang] : DOC_TYPES[lang].slice(0,5);
 
   return (
-    <div style={{padding:28,maxWidth:900}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:900}}>
       <button onClick={onBack} style={{background:'transparent',border:'none',color:C.muted,fontSize:13,cursor:'pointer',marginBottom:16,display:'flex',alignItems:'center',gap:6}}>
         {t.profile.back}
       </button>
@@ -467,7 +467,7 @@ function HorseProfileView({horse, docs, onBack, onScan, onReqSig, onSign, scanni
           </div>
         </div>
 
-        <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:12,marginTop:16,paddingTop:16,borderTop:`1px solid ${C.border}`}}>
+        <div className="grid-3" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginTop:16,paddingTop:16,borderTop:`1px solid ${C.border}`}}>
           {[
             {label:t.profile.from, val:horse.from},
             {label:t.profile.to, val:horse.to},
@@ -533,7 +533,7 @@ function HorseProfileView({horse, docs, onBack, onScan, onReqSig, onSign, scanni
       )}
 
       {activeTab==='info' && (
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
+        <div className="grid-2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
           {[
             {label:t.profile.owner, val:horse.owner},
             {label:t.profile.email, val:horse.email},
@@ -564,7 +564,7 @@ function FlightsView({flights, horses, onHorse, lang}) {
   };
 
   return (
-    <div style={{padding:28,maxWidth:900}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:900}}>
       <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text,marginBottom:4}}>{t.flights.title}</h1>
       <div style={{fontSize:13,color:C.muted,marginBottom:20}}>{flights.length} {t.flights.planned}</div>
 
@@ -586,10 +586,10 @@ function FlightsView({flights, horses, onHorse, lang}) {
                 <Chip label={st.label} color={st.color} bg={st.bg} />
               </div>
 
-              <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:12,marginBottom:14}}>
+              <div className="grid-3" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginBottom:14}}>
                 {[
-                  {label:t.dash.dep, val:f.dep},
-                  {label:t.dash.arr, val:f.arr},
+                  {label:t.dash.dep, val:f.dep[lang] || f.dep},
+                  {label:t.dash.arr, val:f.arr[lang] || f.arr},
                   {label:t.horses.docs, val:`${h?.dc||0}/${h?.dt||5} (${pct}%)`},
                 ].map(x=>(
                   <div key={x.label}>
@@ -643,13 +643,13 @@ function VaultView({horses, horseDocs, onHorse, lang}) {
   const pending = Object.values(horseDocs).flat().filter(d=>d.s==='pending').length;
 
   return (
-    <div style={{padding:28,maxWidth:900}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:900}}>
       <div style={{marginBottom:20}}>
         <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{t.vault.title}</h1>
         <div style={{fontSize:13,color:C.muted,marginTop:2}}>{t.vault.sub}</div>
       </div>
 
-      <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:10,marginBottom:20}}>
+      <div className="grid-4" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:20}}>
         {[
           {label:t.vault.total, val:total, color:C.text},
           {label:t.docStatus.signed, val:signed, color:C.green},
@@ -744,7 +744,7 @@ function InvoicingView({lang, setLang}) {
 
   if (isEditing) {
     return (
-      <div style={{padding:28,maxWidth:900}}>
+      <div className="mobile-padding" style={{padding:28,maxWidth:900}}>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:24}}>
           <div>
             <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{currentT.title} (Editor)</h1>
@@ -753,7 +753,7 @@ function InvoicingView({lang, setLang}) {
           <Btn variant="primary" onClick={()=>setIsEditing(false)}>👁 Preview & Show Invoice</Btn>
         </div>
 
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:20,marginBottom:24}}>
+        <div className="grid-2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:24}}>
           <div style={{background:C.card,padding:20,borderRadius:12,border:`1px solid ${C.border}`}}>
             <h3 style={{fontSize:14,color:C.text,marginBottom:12}}>Client Info</h3>
             <input value={clientName} onChange={e=>setClientName(e.target.value)} placeholder="Client Name" style={{width:'100%',marginBottom:8,background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,outline:'none'}} />
@@ -786,7 +786,7 @@ function InvoicingView({lang, setLang}) {
   }
 
   return (
-    <div style={{padding:28,maxWidth:1100}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:1100}}>
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:24}}>
         <div>
           <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{currentT.title}</h1>
@@ -800,7 +800,7 @@ function InvoicingView({lang, setLang}) {
         </div>
       </div>
 
-      <div style={{display:'grid',gridTemplateColumns:'1fr 300px',gap:24}}>
+      <div className="grid-2-sidebar" style={{display:"grid",gridTemplateColumns:"1fr 300px",gap:24}}>
         <div style={{background:'#ffffff',color:'#111',borderRadius:12,padding:'40px',boxShadow:'0 4px 20px rgba(0,0,0,0.1)'}}>
           <div style={{display:'flex',justifyContent:'space-between',marginBottom:32,paddingBottom:32,borderBottom:'2px solid #f0f0f0'}}>
             <div>
@@ -820,7 +820,7 @@ function InvoicingView({lang, setLang}) {
             </div>
           </div>
 
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24,marginBottom:40}}>
+          <div className="grid-2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:24,marginBottom:40}}>
             <div>
               <div style={{fontSize:11,color:'#888',textTransform:'uppercase',letterSpacing:.5,marginBottom:6,fontWeight:700}}>{currentT.client}</div>
               <div style={{fontSize:15,fontWeight:700,color:'#111'}}>{clientName}</div>
@@ -909,7 +909,7 @@ function StaffView({lang, showToast}) {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div style={{padding:28,maxWidth:1000}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:1000}}>
       <div style={{marginBottom:24}}>
         <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{t.staff.title}</h1>
         <div style={{fontSize:13,color:C.muted,marginTop:2}}>{t.staff.sub}</div>
@@ -989,12 +989,12 @@ function PlanView({lang}) {
   ];
 
   return (
-    <div style={{padding:28,maxWidth:900}}>
+    <div className="mobile-padding" style={{padding:28,maxWidth:900}}>
       <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text,marginBottom:4}}>{t.plan.title}</h1>
       <div style={{fontSize:13,color:C.muted,marginBottom:24}}>{t.plan.sub}</div>
 
       <div style={{fontSize:14,fontWeight:600,color:C.text,marginBottom:12}}>{t.plan.stackTitle}</div>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:10,marginBottom:28}}>
+      <div className="grid-3" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:28}}>
         {stack.map(s=>(
           <div key={s.cat} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:10,padding:'12px 16px'}}>
             <div style={{fontSize:11,fontWeight:600,color:C.orange,letterSpacing:.5,textTransform:'uppercase',marginBottom:8}}>{s.cat}</div>
@@ -1112,6 +1112,24 @@ export default function ManestreamOS() {
   const [bookingStep, setBookingStep] = useState(1);
   const [showSplash, setShowSplash] = useState(true);
 
+  const css = `
+    @media (max-width: 768px) {
+      .app-container { flex-direction: column !important; overflow-y: auto !important; height: auto !important; min-height: 100vh !important; }
+      .sidebar { width: 100% !important; border-right: none !important; border-bottom: 1px solid #2d2d32 !important; flex-shrink: 0 !important; }
+      .nav-links { display: flex !important; flex-direction: row !important; overflow-x: auto !important; padding-bottom: 8px !important; }
+      .nav-links button { min-width: 140px !important; justify-content: center !important; }
+      .mobile-padding { padding: 16px !important; }
+      .grid-4, .grid-3 { grid-template-columns: 1fr 1fr !important; }
+      .grid-2, .grid-2-sidebar { grid-template-columns: 1fr !important; }
+      .horse-row { grid-template-columns: 1fr !important; gap: 8px !important; }
+      table { display: block !important; overflow-x: auto !important; white-space: nowrap !important; }
+      input, select, button, textarea { font-size: 16px !important; padding: 14px 16px !important; min-height: 48px !important; } /* Stop iOS zooming and make touchable */
+      h1 { font-size: 20px !important; }
+      img { max-width: 100% !important; }
+    }
+  `;
+
+
   useEffect(() => {
     if (showSplash) {
       const timer = setTimeout(() => setShowSplash(false), 10000);
@@ -1139,7 +1157,8 @@ export default function ManestreamOS() {
   }
 
   return (
-    <div style={{display:'flex',height:'100vh',background:C.bg,color:C.text,fontFamily:'"Helvetica Neue",system-ui,sans-serif',overflow:'hidden'}}>
+    <style dangerouslySetInnerHTML={{__html: css}} />
+    <div className="app-container" style={{display:'flex',height:'100vh',background:C.bg,color:C.text,fontFamily:'"Helvetica Neue",system-ui,sans-serif',overflow:'hidden'}}>
       <Sidebar view={view} setView={v=>{setView(v);setSelHorse(null);}} lang={lang} setLang={setLang} onBook={()=>{setBookingOpen(true);setBookingStep(1);}} />
 
       <div style={{flex:1,overflowY:'auto'}}>
