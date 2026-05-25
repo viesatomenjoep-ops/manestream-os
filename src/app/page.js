@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const C = {
   orange: '#f56e2e', orangeHov: '#e05a1e', orangeDim: '#f56e2e22',
@@ -968,6 +968,14 @@ export default function ManestreamOS() {
   const [scanning, setScanning] = useState(null);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [bookingStep, setBookingStep] = useState(1);
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    if (showSplash) {
+      const timer = setTimeout(() => setShowSplash(false), 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSplash]);
 
   const showToast = (msg, type='success') => {
     setToast({msg,type});
@@ -975,6 +983,19 @@ export default function ManestreamOS() {
   };
 
   const goHorse = (h) => { setSelHorse(h); setView('horse'); };
+
+  if (showSplash) {
+    return (
+      <div style={{width:'100vw',height:'100vh',background:C.bg,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
+        <video src="/logo.mp4" autoPlay loop muted playsInline style={{width: 300, height: 300, objectFit: 'contain', marginBottom: 20}} />
+        <div style={{fontSize: 28, fontWeight: 800, color: C.text, letterSpacing: -0.5}}>
+          <span style={{color: C.orange}}>Mane</span>stream
+        </div>
+        <div style={{fontSize: 12, color: C.orange, marginTop: 8, letterSpacing: 2, fontWeight: 600}}>OPERATIONS OS</div>
+        <button onClick={() => setShowSplash(false)} style={{marginTop: 40, background: 'transparent', border: `1px solid ${C.border}`, padding: '8px 20px', borderRadius: 20, color: C.muted, cursor: 'pointer', fontSize: 11, textTransform: 'uppercase'}}>Skip Intro</button>
+      </div>
+    );
+  }
 
   return (
     <div style={{display:'flex',height:'100vh',background:C.bg,color:C.text,fontFamily:'"Helvetica Neue",system-ui,sans-serif',overflow:'hidden'}}>
