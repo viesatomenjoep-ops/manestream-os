@@ -693,11 +693,17 @@ function VaultView({horses, horseDocs, onHorse, lang}) {
 }
 
 function InvoicingView({lang, setLang}) {
+  const [isEditing, setIsEditing] = useState(true);
   const [currency, setCurrency] = useState('EUR');
   const [dueDate, setDueDate] = useState('2026-06-08');
   const [discount, setDiscount] = useState(0);
   const [taxRate, setTaxRate] = useState(21);
-  
+  const [clientName, setClientName] = useState('Sophie van den Berg');
+  const [clientEmail, setClientEmail] = useState('sophie@vdb.nl');
+  const [clientAddress, setClientAddress] = useState('Herengracht 102\n1015 CE Amsterdam');
+  const [flightRoute, setFlightRoute] = useState('MS-2026-041 (AMS → MIA)');
+  const [flightDetails, setFlightDetails] = useState('Horse: Quantum Leap\nAWB: 129-84738221\nExport: 25 May 2026');
+
   const currencies = {
     EUR: { label: 'Euro (€)', rate: 1, symbol: '€' },
     USD: { label: 'US Dollar ($)', rate: 1.08, symbol: '$' },
@@ -709,10 +715,18 @@ function InvoicingView({lang, setLang}) {
   };
 
   const t = {
-    nl: { title: 'Facturatie & Financiën', subtitle: 'Beheer facturen en bekijk uitgebreide financiële overzichten', invNum: 'Factuur #', date: 'Factuurdatum', due: 'Vervaldatum', client: 'Klant', flight: 'Vlucht', desc: 'Omschrijving', qty: 'Aantal', amt: 'Bedrag', total: 'Totaal', genBtn: 'Factuur Genereren', payStatus: 'Betalingsstatus', paid: 'Betaald', pending: 'Openstaand', subtotal: 'Subtotaal', tax: 'Btw', discount: 'Korting', amountDue: 'Te betalen', settings: 'Factuur Instellingen', taxRate: 'Btw Tarief (%)', discountAmt: 'Korting (%)', items: { flightCosts: 'Internationale Vluchtkosten', exportDocs: 'Exportdocumentatie & Inklaring', vetFees: 'Veterinaire Keuring (NVWA)', handling: 'Luchthaven Handling & Quarantaine', roadTransport: 'Wegtransport (Stal naar Luchthaven)' } },
-    en: { title: 'Invoicing & Finance', subtitle: 'Manage invoices and view comprehensive financial summaries', invNum: 'Invoice #', date: 'Issue Date', due: 'Due Date', client: 'Client', flight: 'Flight Route', desc: 'Description', qty: 'Qty', amt: 'Amount', total: 'Total', genBtn: 'Generate Invoice', payStatus: 'Payment Status', paid: 'Paid', pending: 'Pending', subtotal: 'Subtotal', tax: 'Tax', discount: 'Discount', amountDue: 'Amount Due', settings: 'Invoice Settings', taxRate: 'Tax Rate (%)', discountAmt: 'Discount (%)', items: { flightCosts: 'International Flight Costs', exportDocs: 'Export Docs & Customs Clearance', vetFees: 'Veterinary Inspection Fees', handling: 'Airport Handling & Quarantine', roadTransport: 'Road Transport' } },
-    es: { title: 'Facturación y Finanzas', subtitle: 'Gestione facturas y vea resúmenes financieros detallados', invNum: 'Factura #', date: 'Fecha de Emisión', due: 'Vencimiento', client: 'Cliente', flight: 'Ruta del Vuelo', desc: 'Descripción', qty: 'Cant', amt: 'Monto', total: 'Total', genBtn: 'Generar Factura', payStatus: 'Estado de Pago', paid: 'Pagado', pending: 'Pendiente', subtotal: 'Subtotal', tax: 'Impuestos', discount: 'Descuento', amountDue: 'Monto a Pagar', settings: 'Ajustes de Factura', taxRate: 'Tasa de Impuesto (%)', discountAmt: 'Descuento (%)', items: { flightCosts: 'Costos de Vuelo Internacional', exportDocs: 'Documentos de Exportación', vetFees: 'Inspección Veterinaria', handling: 'Manejo en Aeropuerto', roadTransport: 'Transporte Terrestre' } }
+    nl: { title: 'Facturatie & Financiën', subtitle: 'Beheer facturen en bekijk uitgebreide financiële overzichten', invNum: 'Factuur #', date: 'Factuurdatum', due: 'Vervaldatum', client: 'Klant', flight: 'Vlucht', desc: 'Omschrijving', qty: 'Aantal', amt: 'Bedrag', total: 'Totaal', genBtn: 'Factuur Genereren', payStatus: 'Betalingsstatus', paid: 'Betaald', pending: 'Openstaand', subtotal: 'Subtotaal', tax: 'Btw', discount: 'Korting', amountDue: 'Te betalen', settings: 'Factuur Instellingen', taxRate: 'Btw Tarief (%)', discountAmt: 'Korting (%)' },
+    en: { title: 'Invoicing & Finance', subtitle: 'Manage invoices and view comprehensive financial summaries', invNum: 'Invoice #', date: 'Issue Date', due: 'Due Date', client: 'Client', flight: 'Flight Route', desc: 'Description', qty: 'Qty', amt: 'Amount', total: 'Total', genBtn: 'Generate Invoice', payStatus: 'Payment Status', paid: 'Paid', pending: 'Pending', subtotal: 'Subtotal', tax: 'Tax', discount: 'Discount', amountDue: 'Amount Due', settings: 'Invoice Settings', taxRate: 'Tax Rate (%)', discountAmt: 'Discount (%)' },
+    es: { title: 'Facturación y Finanzas', subtitle: 'Gestione facturas y vea resúmenes financieros detallados', invNum: 'Factura #', date: 'Fecha de Emisión', due: 'Vencimiento', client: 'Cliente', flight: 'Ruta del Vuelo', desc: 'Descripción', qty: 'Cant', amt: 'Monto', total: 'Total', genBtn: 'Generar Factura', payStatus: 'Estado de Pago', paid: 'Pagado', pending: 'Pendiente', subtotal: 'Subtotal', tax: 'Impuestos', discount: 'Descuento', amountDue: 'Monto a Pagar', settings: 'Ajustes de Factura', taxRate: 'Tasa de Impuesto (%)', discountAmt: 'Descuento (%)' }
   };
+
+  const [items, setItems] = useState([
+    { id: 1, desc: 'International Flight Costs', qty: 1, unit: 8500 },
+    { id: 2, desc: 'Export Docs & Customs Clearance', qty: 1, unit: 450 },
+    { id: 3, desc: 'Veterinary Inspection Fees', qty: 1, unit: 300 },
+    { id: 4, desc: 'Airport Handling & Quarantine', qty: 1, unit: 650 },
+    { id: 5, desc: 'Road Transport', qty: 2, unit: 400 },
+  ]);
 
   const currentT = t[lang];
   const rate = currencies[currency].rate;
@@ -722,19 +736,54 @@ function InvoicingView({lang, setLang}) {
     return new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : lang === 'en' ? 'en-US' : 'es-ES', { style: 'currency', currency: currency }).format(amount * rate);
   };
 
-  const invoiceData = [
-    { desc: currentT.items.flightCosts, qty: 1, unit: 8500 },
-    { desc: currentT.items.exportDocs, qty: 1, unit: 450 },
-    { desc: currentT.items.vetFees, qty: 1, unit: 300 },
-    { desc: currentT.items.handling, qty: 1, unit: 650 },
-    { desc: currentT.items.roadTransport, qty: 2, unit: 400 },
-  ];
-
-  const subtotal = invoiceData.reduce((acc, val) => acc + (val.unit * val.qty), 0);
+  const subtotal = items.reduce((acc, val) => acc + (val.unit * val.qty), 0);
   const discountVal = subtotal * (discount / 100);
   const taxableAmount = subtotal - discountVal;
   const taxVal = taxableAmount * (taxRate / 100);
   const totalAmt = taxableAmount + taxVal;
+
+  if (isEditing) {
+    return (
+      <div style={{padding:28,maxWidth:900}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:24}}>
+          <div>
+            <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{currentT.title} (Editor)</h1>
+            <div style={{fontSize:13,color:C.muted,marginTop:2}}>{currentT.subtitle}</div>
+          </div>
+          <Btn variant="primary" onClick={()=>setIsEditing(false)}>👁 Preview & Show Invoice</Btn>
+        </div>
+
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:20,marginBottom:24}}>
+          <div style={{background:C.card,padding:20,borderRadius:12,border:`1px solid ${C.border}`}}>
+            <h3 style={{fontSize:14,color:C.text,marginBottom:12}}>Client Info</h3>
+            <input value={clientName} onChange={e=>setClientName(e.target.value)} placeholder="Client Name" style={{width:'100%',marginBottom:8,background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,outline:'none'}} />
+            <input value={clientEmail} onChange={e=>setClientEmail(e.target.value)} placeholder="Client Email" style={{width:'100%',marginBottom:8,background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,outline:'none'}} />
+            <textarea value={clientAddress} onChange={e=>setClientAddress(e.target.value)} placeholder="Address" style={{width:'100%',background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,minHeight:60,outline:'none'}} />
+          </div>
+          <div style={{background:C.card,padding:20,borderRadius:12,border:`1px solid ${C.border}`}}>
+            <h3 style={{fontSize:14,color:C.text,marginBottom:12}}>Flight Info</h3>
+            <input value={flightRoute} onChange={e=>setFlightRoute(e.target.value)} placeholder="Flight Route" style={{width:'100%',marginBottom:8,background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,outline:'none'}} />
+            <textarea value={flightDetails} onChange={e=>setFlightDetails(e.target.value)} placeholder="Flight Details" style={{width:'100%',background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,minHeight:60,outline:'none'}} />
+          </div>
+        </div>
+
+        <div style={{background:C.card,padding:20,borderRadius:12,border:`1px solid ${C.border}`}}>
+          <div style={{display:'flex',justifyContent:'space-between',marginBottom:12}}>
+            <h3 style={{fontSize:14,color:C.text}}>Line Items</h3>
+            <button onClick={()=>setItems([...items, {id:Date.now(), desc:'', qty:1, unit:0}])} style={{background:'transparent',color:C.orange,border:'none',cursor:'pointer'}}>+ Add Item</button>
+          </div>
+          {items.map((item, idx) => (
+            <div key={item.id} style={{display:'flex',gap:10,marginBottom:10}}>
+              <input value={item.desc} onChange={e=>{const n=[...items]; n[idx].desc=e.target.value; setItems(n);}} style={{flex:1,background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,outline:'none'}} placeholder="Description" />
+              <input type="number" value={item.qty} onChange={e=>{const n=[...items]; n[idx].qty=Number(e.target.value); setItems(n);}} style={{width:60,background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,outline:'none'}} />
+              <input type="number" value={item.unit} onChange={e=>{const n=[...items]; n[idx].unit=Number(e.target.value); setItems(n);}} style={{width:100,background:C.surface,border:`1px solid ${C.border}`,padding:8,color:C.text,borderRadius:6,outline:'none'}} />
+              <button onClick={()=>setItems(items.filter(i=>i.id!==item.id))} style={{background:C.redBg,color:C.red,border:`1px solid ${C.red}30`,borderRadius:6,padding:'0 12px',cursor:'pointer'}}>✕</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{padding:28,maxWidth:1100}}>
@@ -744,6 +793,7 @@ function InvoicingView({lang, setLang}) {
           <div style={{fontSize:13,color:C.muted,marginTop:2}}>{currentT.subtitle}</div>
         </div>
         <div style={{display:'flex',gap:12}}>
+          <Btn variant="outline" onClick={()=>setIsEditing(true)}>← Back to Editor</Btn>
           <select value={currency} onChange={e=>setCurrency(e.target.value)} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:8,padding:'9px 14px',color:C.text,fontSize:13,outline:'none',cursor:'pointer',fontWeight:600}}>
             {Object.entries(currencies).map(([code, info]) => <option key={code} value={code}>{info.label}</option>)}
           </select>
@@ -754,8 +804,10 @@ function InvoicingView({lang, setLang}) {
         <div style={{background:'#ffffff',color:'#111',borderRadius:12,padding:'40px',boxShadow:'0 4px 20px rgba(0,0,0,0.1)'}}>
           <div style={{display:'flex',justifyContent:'space-between',marginBottom:32,paddingBottom:32,borderBottom:'2px solid #f0f0f0'}}>
             <div>
-              <div style={{fontSize:28,fontWeight:800,letterSpacing:-.5,color:C.orange,marginBottom:12}}>MANESTREAM</div>
-              <div style={{fontSize:13,color:'#555',lineHeight:1.6}}>Schiphol Boulevard 127<br/>1118 BG Schiphol<br/>The Netherlands<br/>info@manestream.com<br/>VAT: NL123456789B01</div>
+              <div style={{marginBottom:12}}>
+                <img src="/logo-dark.svg" alt="Manestream" style={{height: 36, objectFit: 'contain'}} />
+              </div>
+              <div style={{fontSize:13,color:'#555',lineHeight:1.6}}>Manestream Europe<br/>7595 WE Weerselo<br/>The Netherlands<br/>info@flymanestream.com<br/>VAT: NL123456789B01</div>
             </div>
             <div style={{textAlign:'right'}}>
               <div style={{fontSize:32,fontWeight:300,color:'#ccc',marginBottom:12,textTransform:'uppercase'}}>{currentT.title.split(' ')[0]}</div>
@@ -771,13 +823,18 @@ function InvoicingView({lang, setLang}) {
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24,marginBottom:40}}>
             <div>
               <div style={{fontSize:11,color:'#888',textTransform:'uppercase',letterSpacing:.5,marginBottom:6,fontWeight:700}}>{currentT.client}</div>
-              <div style={{fontSize:15,fontWeight:700,color:'#111'}}>Sophie van den Berg</div>
-              <div style={{fontSize:13,color:'#555',marginTop:4,lineHeight:1.5}}>sophie@vdb.nl<br/>Herengracht 102<br/>1015 CE Amsterdam</div>
+              <div style={{fontSize:15,fontWeight:700,color:'#111'}}>{clientName}</div>
+              <div style={{fontSize:13,color:'#555',marginTop:4,lineHeight:1.5}}>
+                {clientEmail}<br/>
+                {clientAddress.split('\n').map((line, i)=><div key={i}>{line}</div>)}
+              </div>
             </div>
             <div>
               <div style={{fontSize:11,color:'#888',textTransform:'uppercase',letterSpacing:.5,marginBottom:6,fontWeight:700}}>{currentT.flight}</div>
-              <div style={{fontSize:15,fontWeight:700,color:'#111'}}>MS-2026-041 (AMS → MIA)</div>
-              <div style={{fontSize:13,color:'#555',marginTop:4,lineHeight:1.5}}>Horse: Quantum Leap<br/>AWB: 129-84738221<br/>Export: 25 May 2026</div>
+              <div style={{fontSize:15,fontWeight:700,color:'#111'}}>{flightRoute}</div>
+              <div style={{fontSize:13,color:'#555',marginTop:4,lineHeight:1.5}}>
+                {flightDetails.split('\n').map((line, i)=><div key={i}>{line}</div>)}
+              </div>
             </div>
           </div>
 
@@ -791,8 +848,8 @@ function InvoicingView({lang, setLang}) {
               </tr>
             </thead>
             <tbody>
-              {invoiceData.map((item, i) => (
-                <tr key={i} style={{borderBottom:'1px solid #eee'}}>
+              {items.map((item) => (
+                <tr key={item.id} style={{borderBottom:'1px solid #eee'}}>
                   <td style={{padding:'16px 0',fontSize:13,color:'#333'}}>{item.desc}</td>
                   <td style={{padding:'16px 0',fontSize:13,color:'#333',textAlign:'center'}}>{item.qty}</td>
                   <td style={{padding:'16px 0',fontSize:13,color:'#333',textAlign:'right'}}>{formatMoney(item.unit)}</td>
@@ -1045,7 +1102,7 @@ function BookingModal({step, setStep, onClose, onComplete, lang}) {
 
 export default function ManestreamOS() {
   const [view, setView] = useState('dashboard');
-  const [lang, setLang] = useState('nl');
+  const [lang, setLang] = useState('en');
   const [selHorse, setSelHorse] = useState(null);
   const [horses, setHorses] = useState(HORSES);
   const [horseDocs, setHorseDocs] = useState(INIT_DOCS);
@@ -1072,9 +1129,8 @@ export default function ManestreamOS() {
   if (showSplash) {
     return (
       <div style={{width:'100vw',height:'100vh',background:C.bg,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-        <video src="/logo.mp4" autoPlay loop muted playsInline style={{width: 300, height: 300, objectFit: 'contain', marginBottom: 20}} />
-        <div style={{marginBottom: 8}}>
-          <img src="/logo.svg" alt="Manestream" style={{height: 32}} />
+        <div style={{marginBottom: 16}}>
+          <img src="/logo-white.svg" alt="Manestream" style={{height: 48, objectFit: 'contain'}} />
         </div>
         <div style={{fontSize: 12, color: C.orange, marginTop: 8, letterSpacing: 2, fontWeight: 600}}>OPERATIONS OS</div>
         <button onClick={() => setShowSplash(false)} style={{marginTop: 40, background: 'transparent', border: `1px solid ${C.border}`, padding: '8px 20px', borderRadius: 20, color: C.muted, cursor: 'pointer', fontSize: 11, textTransform: 'uppercase'}}>Skip Intro</button>
