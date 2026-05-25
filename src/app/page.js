@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 
 const C = {
@@ -14,7 +15,7 @@ const C = {
 
 export const TRANSLATIONS = {
   nl: {
-    nav: { dashboard: 'Dashboard', horses: 'Paarden', flights: 'Vluchten', vault: 'Digitale Kluis', invoicing: 'Invoicing', plan: 'Technisch Plan' },
+    nav: { dashboard: 'Dashboard', horses: 'Paarden', flights: 'Vluchten', vault: 'Digitale Kluis', invoicing: 'Invoicing', staff: 'Personeel', plan: 'Technisch Plan' },
     ui: { newBooking: 'Nieuwe Boeking', loggedIn: 'INGELOGD ALS', role: 'Global Ops Manager', sysBenefits: 'SYSTEEM VOORDELEN' },
     status: { in_flight: 'In vlucht', pre_flight: 'Pre-vlucht', docs_pending: 'Docs ontbreken', delivered: 'Afgeleverd', booking: 'Boeking' },
     docStatus: { signed: 'Ondertekend', uploaded: 'Geüpload', pending: 'Handtekening nodig', missing: 'Ontbreekt' },
@@ -24,11 +25,12 @@ export const TRANSLATIONS = {
     profile: { back: '← Terug naar paardenregister', owner: 'Eigenaar', email: 'Email', from: 'Van', to: 'Naar', tabs: { docs: 'Documenten & Kluis', info: 'Reisinfo', history: 'Activiteit' }, allReq: 'Alle vereiste documenten voor transport', vaultSub: 'Vault: Cloudinary + Viesa Automations', scanBtn: '📷 Scan', reqSigBtn: '✎ Handtekening aanvragen', signBtn: '✓ Digitaal ondertekenen', downBtn: '↓ Downloaden', scanning: 'Scannen...' },
     flights: { title: 'Vluchten', planned: 'vluchten gepland of actief', checkDocs: 'Documenten checken', viewHorse: 'Paard bekijken' },
     vault: { title: 'Digitale Kluis', sub: 'Versleuteld archief · Cloudinary + Viesa Automations', total: 'Totaal docs' },
+    staff: { title: 'Personeelsbeheer', sub: 'Beheer toegang en inloggegevens voor het team', name: 'Naam', email: 'E-mailadres', phone: 'Telefoon', role: 'Rol', status: 'Status', manage: 'Beheer credentials', credentials: 'Inloggegevens beheren', genPass: 'Genereer nieuw wachtwoord', save: 'Opslaan', close: 'Sluiten', sendEmail: 'Stuur inloggegevens per e-mail', access: 'Systeemtoegang' },
     plan: { title: 'Technisch Plan', sub: 'Van papierwerk naar volledig digitale operatie', stackTitle: 'Tech Stack', dbSchema: 'Database Schema (Viesa Automations / JSON)' },
     booking: { title: 'Nieuwe Boeking', cancel: 'Annuleren', prev: '← Vorige', next: 'Volgende →', confirm: '✓ Bevestig boeking', steps: ['Paard info','Route & datum','Documenten checklist','Bevestigen'], hInfo: 'Paard informatie', hName: 'Naam paard', hBreed: 'Ras', hOwner: 'Eigenaar', hEmail: 'Email eigenaar', rInfo: 'Route & vertrektijd', rFrom: 'Van (ophaaladres)', rTo: 'Naar (bestemming)', rDate: 'Gewenste vertrekdatum', docCheck: 'Auto-gegenereerde documenten checklist', docMsg: '✓ Systeem heeft automatisch een checklist aangemaakt op basis van de route', req: 'Vereist', readyMsg: '✓ Klaar om te bevestigen' }
   },
   en: {
-    nav: { dashboard: 'Dashboard', horses: 'Horses', flights: 'Flights', vault: 'Digital Vault', invoicing: 'Invoicing', plan: 'Tech Plan' },
+    nav: { dashboard: 'Dashboard', horses: 'Horses', flights: 'Flights', vault: 'Digital Vault', invoicing: 'Invoicing', staff: 'Staff', plan: 'Tech Plan' },
     ui: { newBooking: 'New Booking', loggedIn: 'LOGGED IN AS', role: 'Global Ops Manager', sysBenefits: 'SYSTEM BENEFITS' },
     status: { in_flight: 'In flight', pre_flight: 'Pre-flight', docs_pending: 'Docs missing', delivered: 'Delivered', booking: 'Booking' },
     docStatus: { signed: 'Signed', uploaded: 'Uploaded', pending: 'Signature needed', missing: 'Missing' },
@@ -38,11 +40,12 @@ export const TRANSLATIONS = {
     profile: { back: '← Back to horse registry', owner: 'Owner', email: 'Email', from: 'From', to: 'To', tabs: { docs: 'Documents & Vault', info: 'Travel Info', history: 'Activity' }, allReq: 'All required documents for transport', vaultSub: 'Vault: Cloudinary + Viesa Automations', scanBtn: '📷 Scan', reqSigBtn: '✎ Request signature', signBtn: '✓ Digitally sign', downBtn: '↓ Download', scanning: 'Scanning...' },
     flights: { title: 'Flights', planned: 'flights planned or active', checkDocs: 'Check documents', viewHorse: 'View horse' },
     vault: { title: 'Digital Vault', sub: 'Encrypted archive · Cloudinary + Viesa Automations', total: 'Total docs' },
+    staff: { title: 'Staff Management', sub: 'Manage access and login credentials for the team', name: 'Name', email: 'Email', phone: 'Phone', role: 'Role', status: 'Status', manage: 'Manage credentials', credentials: 'Login Credentials', genPass: 'Generate new password', save: 'Save', close: 'Close', sendEmail: 'Send credentials via email', access: 'System Access' },
     plan: { title: 'Tech Plan', sub: 'From paperwork to fully digital operation', stackTitle: 'Tech Stack', dbSchema: 'Database Schema (Viesa Automations / JSON)' },
     booking: { title: 'New Booking', cancel: 'Cancel', prev: '← Previous', next: 'Next →', confirm: '✓ Confirm booking', steps: ['Horse info','Route & date','Documents checklist','Confirm'], hInfo: 'Horse information', hName: 'Horse name', hBreed: 'Breed', hOwner: 'Owner', hEmail: 'Owner email', rInfo: 'Route & departure', rFrom: 'From (pickup)', rTo: 'To (destination)', rDate: 'Desired departure date', docCheck: 'Auto-generated documents checklist', docMsg: '✓ System automatically created a checklist based on the route', req: 'Required', readyMsg: '✓ Ready to confirm' }
   },
   es: {
-    nav: { dashboard: 'Panel', horses: 'Caballos', flights: 'Vuelos', vault: 'Bóveda Digital', invoicing: 'Facturación', plan: 'Plan Técnico' },
+    nav: { dashboard: 'Panel', horses: 'Caballos', flights: 'Vuelos', vault: 'Bóveda Digital', invoicing: 'Facturación', staff: 'Personal', plan: 'Plan Técnico' },
     ui: { newBooking: 'Nueva Reserva', loggedIn: 'CONECTADO COMO', role: 'Gerente Global', sysBenefits: 'BENEFICIOS DEL SISTEMA' },
     status: { in_flight: 'En vuelo', pre_flight: 'Pre-vuelo', docs_pending: 'Faltan docs', delivered: 'Entregado', booking: 'Reserva' },
     docStatus: { signed: 'Firmado', uploaded: 'Subido', pending: 'Firma necesaria', missing: 'Falta' },
@@ -52,6 +55,7 @@ export const TRANSLATIONS = {
     profile: { back: '← Volver al registro', owner: 'Propietario', email: 'Email', from: 'De', to: 'A', tabs: { docs: 'Documentos y Bóveda', info: 'Info de Viaje', history: 'Actividad' }, allReq: 'Todos los documentos requeridos', vaultSub: 'Bóveda: Cloudinary + Viesa Automations', scanBtn: '📷 Escanear', reqSigBtn: '✎ Solicitar firma', signBtn: '✓ Firmar digitalmente', downBtn: '↓ Descargar', scanning: 'Escaneando...' },
     flights: { title: 'Vuelos', planned: 'vuelos planeados o activos', checkDocs: 'Revisar documentos', viewHorse: 'Ver caballo' },
     vault: { title: 'Bóveda Digital', sub: 'Archivo encriptado · Cloudinary + Viesa Automations', total: 'Total docs' },
+    staff: { title: 'Gestión de Personal', sub: 'Administrar acceso y credenciales para el equipo', name: 'Nombre', email: 'Correo electrónico', phone: 'Teléfono', role: 'Rol', status: 'Estado', manage: 'Gestionar credenciales', credentials: 'Credenciales de acceso', genPass: 'Generar nueva contraseña', save: 'Guardar', close: 'Cerrar', sendEmail: 'Enviar credenciales por correo', access: 'Acceso al sistema' },
     plan: { title: 'Plan Técnico', sub: 'De papeleo a operación totalmente digital', stackTitle: 'Tech Stack', dbSchema: 'Database Schema (Viesa Automations / JSON)' },
     booking: { title: 'Nueva Reserva', cancel: 'Cancelar', prev: '← Anterior', next: 'Siguiente →', confirm: '✓ Confirmar reserva', steps: ['Info caballo','Ruta y fecha','Lista de docs','Confirmar'], hInfo: 'Información del caballo', hName: 'Nombre del caballo', hBreed: 'Raza', hOwner: 'Propietario', hEmail: 'Email propietario', rInfo: 'Ruta y salida', rFrom: 'De (origen)', rTo: 'A (destino)', rDate: 'Fecha deseada', docCheck: 'Lista de docs auto-generada', docMsg: '✓ El sistema creó la lista según la ruta', req: 'Requerido', readyMsg: '✓ Listo para confirmar' }
   }
@@ -83,6 +87,18 @@ const DOC_TYPES = {
     { type:'vaccine', name:'Pasaporte de Vacunación', note:'Opcional pero recomendado' }
   ]
 };
+
+const STAFF_MEMBERS = [
+  { id: 'S01', name: 'Lucas Porter', email: 'lucas@flymanestream.com', phone: '+1 214 707 4991', role: 'Directeur / Oprichter' },
+  { id: 'S02', name: 'Lois de Kramer', email: 'lois@flymanestream.com', phone: '+31 6 31 16 26 84', role: 'Global Ops Manager' },
+  { id: 'S03', name: 'Olivia Pleijsier', email: 'olivia@flymanestream.com', phone: '+31 6 23 14 23 29', role: 'Logistics Coordinator' },
+  { id: 'S04', name: 'Linn Hofsté', email: 'linn@flymanestream.com', phone: '+31 6 21 41 37 38', role: 'Export Specialist' },
+  { id: 'S05', name: 'Jet Eppink', email: 'jet@flymanestream.com', phone: '+31 6 57 18 12 61', role: 'Veterinary Coordinator' },
+  { id: 'S06', name: 'Camilla Bracco', email: 'camilla@flymanestream.com', phone: '+1 561 818 5156', role: 'US Operations Manager' },
+  { id: 'S07', name: 'Emily Sanders', email: 'emily@flymanestream.com', phone: '+31 6 24 60 56 53', role: 'Head Groom' },
+  { id: 'S08', name: 'Tania van Leeuwen', email: 'tania@flymanestream.com', phone: '+31 6 12 94 69 16', role: 'Flight Attendant' },
+  { id: 'S09', name: 'Chris Hagenvoort', email: 'chris@flymanestream.com', phone: '+31 6 23 41 26 95', role: 'Ground Transport' },
+];
 
 const HORSES = [
   { id:'H001', name:'Quantum Leap', breed:'KWPN', age:8, col:'Bay', owner:'Sophie van den Berg', email:'sophie@vdb.nl', from:'Amsterdam, NL', to:'Wellington, FL', flight:'MS-2026-041', status:'in_flight', dc:6, dt:6 },
@@ -191,14 +207,15 @@ function Sidebar({view, setView, onBook, lang, setLang}) {
     {id:'flights',   icon:'◎', label:t.nav.flights},
     {id:'vault',     icon:'◫', label:t.nav.vault},
     {id:'invoicing', icon:'€', label:t.nav.invoicing},
+    {id:'staff',     icon:'👥', label:t.nav.staff},
     {id:'plan',      icon:'◻', label:t.nav.plan},
   ];
 
   return (
     <div style={{width:220,background:C.surface,borderRight:`1px solid ${C.border}`,display:'flex',flexDirection:'column',flexShrink:0}}>
       <div style={{padding:'20px 20px 16px',borderBottom:`1px solid ${C.border}`}}>
-        <div style={{fontSize:18,fontWeight:700,letterSpacing:-.3,color:C.text}}>
-          <span style={{color:C.orange}}>Mane</span>stream
+        <div style={{marginBottom: 4}}>
+          <img src="/logo.svg" alt="Manestream" style={{height: 24}} />
         </div>
         <div style={{fontSize:11,color:C.dim,marginTop:2,letterSpacing:.5}}>OPERATIONS OS · v1.0</div>
       </div>
@@ -830,6 +847,74 @@ function InvoicingView({lang, setLang}) {
   );
 }
 
+function StaffView({lang, showToast}) {
+  const t = TRANSLATIONS[lang];
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <div style={{padding:28,maxWidth:1000}}>
+      <div style={{marginBottom:24}}>
+        <h1 style={{fontSize:22,fontWeight:700,letterSpacing:-.4,color:C.text}}>{t.staff.title}</h1>
+        <div style={{fontSize:13,color:C.muted,marginTop:2}}>{t.staff.sub}</div>
+      </div>
+
+      <div style={{display:'flex',gap:24,alignItems:'flex-start'}}>
+        <div style={{flex:1,display:'flex',flexDirection:'column',gap:8}}>
+          {STAFF_MEMBERS.map(s => (
+            <div key={s.id} onClick={()=>setSelected(s)} style={{background:selected?.id===s.id?C.orangeDim:C.card,border:`1px solid ${selected?.id===s.id?C.orange:C.border}`,borderRadius:10,padding:'14px 18px',cursor:'pointer',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+              <div>
+                <div style={{fontSize:14,fontWeight:600,color:C.text}}>{s.name}</div>
+                <div style={{fontSize:12,color:C.muted,marginTop:2}}>{s.role}</div>
+              </div>
+              <div style={{textAlign:'right'}}>
+                <div style={{fontSize:12,color:C.dim}}>{s.email}</div>
+                <div style={{fontSize:11,color:C.orange,marginTop:4,fontWeight:500}}>{t.staff.manage} →</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {selected && (
+          <div style={{width:340,background:C.card,border:`1px solid ${C.border}`,borderRadius:12,padding:24,position:'sticky',top:28}}>
+            <div style={{width:56,height:56,borderRadius:99,background:C.orangeDim,display:'flex',alignItems:'center',justifyContent:'center',fontSize:20,color:C.orange,marginBottom:16,fontWeight:700}}>
+              {selected.name.charAt(0)}
+            </div>
+            <div style={{fontSize:18,fontWeight:700,color:C.text}}>{selected.name}</div>
+            <div style={{fontSize:13,color:C.muted,marginBottom:24}}>{selected.role}</div>
+
+            <div style={{fontSize:12,fontWeight:600,color:C.text,marginBottom:12,textTransform:'uppercase',letterSpacing:.5}}>{t.staff.credentials}</div>
+            
+            <div style={{marginBottom:12}}>
+              <label style={{fontSize:11,color:C.dim,display:'block',marginBottom:4}}>{t.staff.email}</label>
+              <input value={selected.email} readOnly style={{width:'100%',background:C.surface,border:`1px solid ${C.border}`,borderRadius:8,padding:'8px 12px',color:C.muted,fontSize:13,outline:'none'}} />
+            </div>
+
+            <div style={{marginBottom:16}}>
+              <label style={{fontSize:11,color:C.dim,display:'block',marginBottom:4}}>{t.staff.access}</label>
+              <select style={{width:'100%',background:C.surface,border:`1px solid ${C.border}`,borderRadius:8,padding:'8px 12px',color:C.text,fontSize:13,outline:'none'}}>
+                <option>Global Ops Manager</option>
+                <option>Logistics Coordinator</option>
+                <option>Veterinary Coordinator</option>
+                <option>Groom / Flight Attendant</option>
+                <option>Directeur</option>
+              </select>
+            </div>
+
+            <div style={{marginBottom:24}}>
+              <Btn variant="outline" style={{width:'100%',marginBottom:8}} onClick={()=>showToast('Password reset link sent!')}>
+                {t.staff.genPass}
+              </Btn>
+              <Btn variant="primary" style={{width:'100%'}} onClick={()=>showToast('Credentials saved & emailed!')}>
+                {t.staff.sendEmail}
+              </Btn>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function PlanView({lang}) {
   const t = TRANSLATIONS[lang];
   const painPoints = [
@@ -988,8 +1073,8 @@ export default function ManestreamOS() {
     return (
       <div style={{width:'100vw',height:'100vh',background:C.bg,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
         <video src="/logo.mp4" autoPlay loop muted playsInline style={{width: 300, height: 300, objectFit: 'contain', marginBottom: 20}} />
-        <div style={{fontSize: 28, fontWeight: 800, color: C.text, letterSpacing: -0.5}}>
-          <span style={{color: C.orange}}>Mane</span>stream
+        <div style={{marginBottom: 8}}>
+          <img src="/logo.svg" alt="Manestream" style={{height: 32}} />
         </div>
         <div style={{fontSize: 12, color: C.orange, marginTop: 8, letterSpacing: 2, fontWeight: 600}}>OPERATIONS OS</div>
         <button onClick={() => setShowSplash(false)} style={{marginTop: 40, background: 'transparent', border: `1px solid ${C.border}`, padding: '8px 20px', borderRadius: 20, color: C.muted, cursor: 'pointer', fontSize: 11, textTransform: 'uppercase'}}>Skip Intro</button>
@@ -1020,6 +1105,7 @@ export default function ManestreamOS() {
         {view==='flights' && <FlightsView flights={FLIGHTS} horses={horses} onHorse={goHorse} lang={lang} />}
         {view==='vault' && <VaultView horses={horses} horseDocs={horseDocs} onHorse={goHorse} lang={lang} />}
         {view==='invoicing' && <InvoicingView lang={lang} setLang={setLang} />}
+        {view==='staff' && <StaffView lang={lang} showToast={showToast} />}
         {view==='plan' && <PlanView lang={lang} />}
       </div>
 
