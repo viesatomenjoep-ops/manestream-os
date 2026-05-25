@@ -1157,44 +1157,46 @@ export default function ManestreamOS() {
   }
 
   return (
-    <style dangerouslySetInnerHTML={{__html: css}} />
-    <div className="app-container" style={{display:'flex',height:'100vh',background:C.bg,color:C.text,fontFamily:'"Helvetica Neue",system-ui,sans-serif',overflow:'hidden'}}>
-      <Sidebar view={view} setView={v=>{setView(v);setSelHorse(null);}} lang={lang} setLang={setLang} onBook={()=>{setBookingOpen(true);setBookingStep(1);}} />
+    <>
+      <style dangerouslySetInnerHTML={{__html: css}} />
+      <div className="app-container" style={{display:'flex',height:'100vh',background:C.bg,color:C.text,fontFamily:'"Helvetica Neue",system-ui,sans-serif',overflow:'hidden'}}>
+        <Sidebar view={view} setView={v=>{setView(v);setSelHorse(null);}} lang={lang} setLang={setLang} onBook={()=>{setBookingOpen(true);setBookingStep(1);}} />
 
-      <div style={{flex:1,overflowY:'auto'}}>
-        {view==='dashboard' && <DashboardView horses={horses} flights={FLIGHTS} onHorse={goHorse} showToast={showToast} lang={lang} />}
-        {view==='horses' && <HorsesView horses={horses} onSelect={goHorse} lang={lang} />}
-        {view==='horse' && selHorse && (
-          <HorseProfileView
-            horse={horses.find(h=>h.id===selHorse.id)||selHorse}
-            docs={horseDocs[selHorse.id]||[]}
-            onBack={()=>setView('horses')}
-            onScan={()=>{}}
-            onReqSig={()=>{}}
-            onSign={()=>{}}
-            scanning={scanning}
-            showToast={showToast}
+        <div style={{flex:1,overflowY:'auto'}}>
+          {view==='dashboard' && <DashboardView horses={horses} flights={FLIGHTS} onHorse={goHorse} showToast={showToast} lang={lang} />}
+          {view==='horses' && <HorsesView horses={horses} onSelect={goHorse} lang={lang} />}
+          {view==='horse' && selHorse && (
+            <HorseProfileView
+              horse={horses.find(h=>h.id===selHorse.id)||selHorse}
+              docs={horseDocs[selHorse.id]||[]}
+              onBack={()=>setView('horses')}
+              onScan={()=>{}}
+              onReqSig={()=>{}}
+              onSign={()=>{}}
+              scanning={scanning}
+              showToast={showToast}
+              lang={lang}
+            />
+          )}
+          {view==='flights' && <FlightsView flights={FLIGHTS} horses={horses} onHorse={goHorse} lang={lang} />}
+          {view==='vault' && <VaultView horses={horses} horseDocs={horseDocs} onHorse={goHorse} lang={lang} />}
+          {view==='invoicing' && <InvoicingView lang={lang} setLang={setLang} />}
+          {view==='staff' && <StaffView lang={lang} showToast={showToast} />}
+          {view==='plan' && <PlanView lang={lang} />}
+        </div>
+
+        {bookingOpen && (
+          <BookingModal
+            step={bookingStep}
+            setStep={setBookingStep}
+            onClose={()=>setBookingOpen(false)}
+            onComplete={()=>{setBookingOpen(false);showToast('✓ Booking created!');}}
             lang={lang}
           />
         )}
-        {view==='flights' && <FlightsView flights={FLIGHTS} horses={horses} onHorse={goHorse} lang={lang} />}
-        {view==='vault' && <VaultView horses={horses} horseDocs={horseDocs} onHorse={goHorse} lang={lang} />}
-        {view==='invoicing' && <InvoicingView lang={lang} setLang={setLang} />}
-        {view==='staff' && <StaffView lang={lang} showToast={showToast} />}
-        {view==='plan' && <PlanView lang={lang} />}
+
+        {toast && <Toast msg={toast.msg} type={toast.type} />}
       </div>
-
-      {bookingOpen && (
-        <BookingModal
-          step={bookingStep}
-          setStep={setBookingStep}
-          onClose={()=>setBookingOpen(false)}
-          onComplete={()=>{setBookingOpen(false);showToast('✓ Booking created!');}}
-          lang={lang}
-        />
-      )}
-
-      {toast && <Toast msg={toast.msg} type={toast.type} />}
-    </div>
+    </>
   );
 }
